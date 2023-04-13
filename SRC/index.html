@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/output.css" />
+    <!-- ===JQuery CDN=== -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- ===FONT POPPINS=== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ====Box Icom==== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>CRUD APP</title>
+  </head>
+  <body  id="bodyMode"  >
+
+    <!-- =====NAVBAR====== -->
+    <section id="main_navbar fixed" 
+    class="w-full h-[70px] bg-slate-50 dark:bg-slate-800 dark:text-slate-50 text-slate-800">
+        
+        <nav id="navbar_content" 
+        class="max-w-[1040px] m-auto h-[100%]  flex items-center justify-between">
+            <!--===HEADING===-->
+            <h1 class="text-blue-600 text-2xl cursor-pointer">CURD <a class="text-black dark:text-white"> APP</a></h1>
+                    
+                <!-- List of navbar -->
+                <ul class="flex items-center h-[100%] ">
+                    <li 
+                    class="box-border mx-10 py-[3px] dark:hover:text-blue-100 hover:border-b-[2px] hover:border-blue-400 hover:text-[16px]"><a href=""> Jquery & Ajax</a></li>
+                    <li 
+                    class="box-border mx-10 py-[3px] dark:hover:text-blue-100 hover:border-b-[2px] hover:border-blue-400 hover:text-[16px]"><a href=""> JS & Fetch API</a></li>
+                    <li
+                    class="box-border mx-10 py-[3px] dark:hover:text-blue-100 hover:border-b-[2px] hover:border-blue-400 hover:text-[16px]"><a href="">JS & XML</a></li>  
+                </ul>
+
+                <!-- BTN -->
+                <div id="btn" class="box-border w-[180px] h-[100%] flex items-center justify-center" >
+                    <div class="px-[5px] py-[5px] rounded-full bg-slate-700 opacity-40 hover:opacity-80 dark:bg-slate-600 dark:opacity-100 dark:hover:bg-slate-700 text-white text-center ">
+                        <div class="flex justify-center items-center">
+                            <i id="icon" class='bx bxs-moon'></i>
+                        </div>
+                    
+                    </div>
+                </div>
+        </nav>
+    </section>
+    
+    
+    <div class="container w-full mb-10">
+      <h1 class="text-center text-3xl font-bold my-4 py-2 border-2">
+        Show the Recipes Using API CALL
+      </h1>
+      
+    </div>
+
+    
+    <!-- ======FORMS FOR POST REQUEST====== -->
+    <div class="flex w-full justify-center">
+    <div class="w-full max-w-xs my-10">
+  <form id="postForm" class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 dark:bg-slate-800 dark:text-white">
+    <h1 class="font-bold text-xl italic border-b-2 mb-3">POST & UPDATE request</h1>
+    
+    <input  id="idInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hidden" id="ID" type="text" placeholder="ID">
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2 dark:text-slate-300" for="username">
+        Title
+      </label>
+      <input  id="titleInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" type="text" placeholder="Title">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2 dark:text-slate-300" for="username">
+        Body
+      </label>
+      <input id="bodyInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="body" type="text" placeholder="Body">
+    </div>
+    
+    <div class="flex items-center justify-between">
+      <button id="postBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+       POST 
+      </button>
+      <button id="updateBtn" class=" text-black border-2 border-blue-700 hover:bg-blue-700 hover:text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-lg dark:text-white" type="button">
+       UPDATE 
+      </button>
+    </div>
+  </form>
+  
+</div>
+</div>
+
+
+
+
+
+
+
+    
+    <div class="tableContainer w-[1150px] mx-auto ">
+        
+        <div class="btn mb-5">
+            <a href="#"><input type="button" value="Get Request"
+                class="rounded-[10px] px-2 py-1 bg-blue-700 text-white border-2 border-blue-800 hover:bg-blue-800"></a>
+        </div>
+
+
+
+
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table
+          class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        >
+          <thead
+            class="text-md  uppercase  bg-gray-700 text-gray-200"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Product name</th>
+              <th scope="col" class="px-6 py-3">Color</th>
+              <th scope="col" class="px-6 py-3">Category</th>
+              <th scope="col" class="px-6 py-3">Price</th>
+              <th scope="col" class="px-6 py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody id="tBody" class=" bg-blue-50">
+            <tr class=" border-b dark:bg-gray-900 dark:border-gray-700">
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                Apple MacBook Pro 17"
+              </th>
+              <td class="px-6 py-4">Silver</td>
+              <td class="px-6 py-4">Laptop</td>
+              <td class="px-6 py-4">$2999</td>
+              <td class="px-6 py-4">
+                <a
+                  
+                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline updateHandler"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <!-- Simple Get request using JQuery -->
+      <div class="my-24">
+        <span><input id="btnGet" type="button" value="Content for TxT"
+          class=" mx-2 rounded-[10px] px-2 py-1 border-2 border-blue-800 text-gray-800 hover:text-white hover:bg-blue-800 cursor-pointer"></span>
+        <span><h1 id='txt' class="inline">Test</h1></span>
+      </div>
+    </div>
+
+    
+
+    <!-- ===Script=== -->
+    <script src="./script.js"></script>
+  </body>
+</html>
